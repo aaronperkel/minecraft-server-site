@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -15,6 +16,7 @@
       --btn-hover: #0f3460;
       --shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
     }
+
     *,
     *::before,
     *::after {
@@ -22,6 +24,7 @@
       margin: 0;
       padding: 0;
     }
+
     body {
       font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
       background: var(--bg);
@@ -29,12 +32,15 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      padding-top: 10vh; /* Adjusted padding to move content higher */
+      padding-top: 10vh;
+      /* Adjusted padding to move content higher */
       padding-left: 2rem;
       padding-right: 2rem;
       padding-bottom: 2rem;
-      min-height: 90vh; /* Adjust min-height to accommodate */
+      min-height: 90vh;
+      /* Adjust min-height to accommodate */
     }
+
     .container {
       display: flex;
       flex-wrap: wrap;
@@ -43,41 +49,51 @@
       padding: 1rem;
       width: 100%;
     }
+
     h1 {
       font-size: clamp(2rem, 5vw, 3rem);
       text-align: center;
       margin-bottom: 2rem;
-      color: var(--text); /* Removed the gradient for better readability */
+      color: var(--text);
+      /* Removed the gradient for better readability */
       animation: fadeIn 0.8s ease-out both;
     }
+
     .info-card {
       background: var(--card-bg);
       padding: 2rem;
       border-radius: 12px;
-      width: 100%; /* Take full width on small screens */
-      max-width: 500px; /* Max-width for larger screens */
+      width: 100%;
+      /* Take full width on small screens */
+      max-width: 500px;
+      /* Max-width for larger screens */
       box-shadow: var(--shadow);
       animation: fadeIn 0.8s ease-out 0.2s both;
       display: flex;
       flex-direction: column;
     }
+
     .info-item {
       margin-bottom: 1.5rem;
     }
+
     .info-item:last-of-type {
       margin-bottom: 0;
     }
+
     .info-label {
       font-weight: 600;
       font-size: 1.1rem;
       display: block;
       margin-bottom: 0.5rem;
     }
+
     .info-value {
       display: flex;
       align-items: center;
       gap: 1rem;
     }
+
     .ip-address {
       font-family: 'Courier New', Courier, monospace;
       background-color: #0f1627;
@@ -85,6 +101,7 @@
       border-radius: 6px;
       word-break: break-all;
     }
+
     .copy-button {
       padding: 0.75rem 1.5rem;
       background: var(--btn-bg);
@@ -96,23 +113,29 @@
       font-weight: 600;
       transition: background 0.3s ease, transform 0.1s ease;
     }
+
     .copy-button:hover {
       background: var(--btn-hover);
     }
+
     .copy-button:active {
       transform: scale(0.98);
     }
+
     .instructions {
       list-style-position: inside;
       line-height: 1.6;
     }
+
     .instructions li {
       margin-bottom: 0.75rem;
       padding-left: 0.5rem;
     }
+
     .instructions li:last-child {
       margin-bottom: 0;
     }
+
     .form-input {
       width: 100%;
       padding: 0.75rem;
@@ -123,6 +146,7 @@
       color: var(--text);
       font-size: 1rem;
     }
+
     .form-button {
       width: 100%;
       padding: 0.75rem 1.5rem;
@@ -135,41 +159,91 @@
       font-weight: 600;
       transition: background 0.3s ease, transform 0.1s ease;
     }
+
     .form-button:hover {
       background: var(--btn-hover);
     }
+
     #whitelisted-players-card .info-item {
-      max-height: 250px; /* Adjust height as needed */
+      max-height: 250px;
+      /* Adjust height as needed */
       overflow-y: auto;
     }
+
     #player-list {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
       gap: 1rem;
-      padding-right: 1rem; /* For scrollbar spacing */
+      padding-right: 1rem;
+      /* For scrollbar spacing */
     }
+
     .player {
       display: flex;
       flex-direction: column;
       align-items: center;
       text-align: center;
     }
+
     .player img {
       width: 64px;
       height: 64px;
       border-radius: 8px;
       margin-bottom: 0.5rem;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
     }
+
     .player span {
       font-size: 0.9rem;
       word-break: break-all;
     }
+
+    .form-description {
+      margin-bottom: 1rem;
+    }
+
+    #online-player-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
+      gap: 1rem;
+      padding-right: 1rem;
+      /* For scrollbar spacing */
+    }
+
+    .status-container {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .status-indicator {
+      padding: 0.5rem 1rem;
+      border-radius: 20px;
+      font-weight: 600;
+      color: var(--text);
+    }
+
+    .status-indicator.online {
+      background-color: #28a745;
+      /* Green */
+    }
+
+    .status-indicator.offline {
+      background-color: #dc3545;
+      /* Red */
+    }
+
+    #server-version-indicator {
+      background-color: var(--accent-start);
+    }
+
     @keyframes fadeIn {
       from {
         opacity: 0;
         transform: translateY(20px);
       }
+
       to {
         opacity: 1;
         transform: translateY(0);
@@ -183,7 +257,7 @@
   <link rel="manifest" href="/public/site.webmanifest" />
   <link rel="shortcut icon" href="/public/favicon.ico" />
 
-  <meta name="theme-color" content="#ffffff" />
+  <meta name="theme-color" content="#1a1a2e" />
   <meta name="apple-mobile-web-app-title" content="Aaron MC" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="default" />
@@ -191,6 +265,10 @@
 
 <body>
   <h1>Welcome to Aaron's Minecraft Server!</h1>
+  <div id="server-status-container" class="status-container">
+    <span id="server-status-indicator" class="status-indicator">Pinging...</span>
+    <span id="server-version-indicator" class="status-indicator"></span>
+  </div>
   <main class="container">
     <div class="info-card">
       <div class="info-item">
@@ -211,30 +289,31 @@
     </div>
 
     <div class="info-card" id="server-status-card">
-      <div class="info-item">
-        <span class="info-label">Server Status</span>
-        <p id="server-status">Pinging server...</p>
+      <span class="info-label">Online Players</span>
+      <div id="online-player-list">
+        <p>Nobody is online.</p>
       </div>
     </div>
+
 
     <div class="info-card" id="whitelist-request-card">
       <div class="info-item">
         <span class="info-label">Request to be Whitelisted</span>
-        <p>Want to join? Enter your Minecraft username below to request access.</p>
+        <p class="form-description">Want to join? Enter your Minecraft username below to request access.</p>
         <form id="whitelist-form">
-            <input type="text" id="minecraft-username" class="form-input" placeholder="Enter your username" required />
-            <button type="submit" class="form-button">Request Access</button>
+          <input type="text" id="minecraft-username" class="form-input" placeholder="Enter your username" required />
+          <button type="submit" class="form-button">Request Access</button>
         </form>
-        </div>
+      </div>
     </div>
 
     <div class="info-card" id="whitelisted-players-card">
-        <div class="info-item">
-            <span class="info-label">Whitelisted Players</span>
-            <div id="player-list">
-              <p>Coming soon!</p>
-            </div>
+      <div class="info-item">
+        <span class="info-label">Whitelisted Players</span>
+        <div id="player-list">
+          <p>Coming soon!</p>
         </div>
+      </div>
     </div>
   </main>
   <script>
@@ -258,18 +337,54 @@
       });
 
       const fetchPlayerCount = async () => {
-        const statusElement = document.getElementById('server-status');
+        const statusIndicator = document.getElementById('server-status-indicator');
+        const versionIndicator = document.getElementById('server-version-indicator');
+        const onlinePlayerListElement = document.getElementById('online-player-list');
+
         try {
           const response = await fetch('https://mcapi.us/server/status?ip=minecraft.aaronperkel.com');
           const data = await response.json();
+
           if (data.online) {
-            statusElement.innerHTML = `There are currently ${data.players.now} out of ${data.players.max} players online.<br>Version: ${data.server.name}`;
+            statusIndicator.textContent = 'Online';
+            statusIndicator.classList.remove('offline');
+            statusIndicator.classList.add('online');
+            versionIndicator.textContent = data.server.name;
+
+            onlinePlayerListElement.innerHTML = ''; // Clear existing content
+
+            if (data.players.sample && data.players.sample.length > 0) {
+              data.players.sample.forEach(player => {
+                const playerElement = document.createElement('div');
+                playerElement.className = 'player';
+
+                const avatar = document.createElement('img');
+                avatar.src = `https://crafatar.com/avatars/${player.id}?size=64&overlay`;
+                avatar.alt = `${player.name}'s avatar`;
+
+                const name = document.createElement('span');
+                name.textContent = player.name;
+
+                playerElement.appendChild(avatar);
+                playerElement.appendChild(name);
+                onlinePlayerListElement.appendChild(playerElement);
+              });
+            } else {
+              onlinePlayerListElement.innerHTML = '<p>Nobody is online.</p>';
+            }
           } else {
-            statusElement.textContent = 'Server is currently offline.';
+            statusIndicator.textContent = 'Offline';
+            statusIndicator.classList.remove('online');
+            statusIndicator.classList.add('offline');
+            versionIndicator.textContent = '';
+            onlinePlayerListElement.innerHTML = '<p>Server is offline.</p>';
           }
         } catch (error) {
           console.error('Error fetching server status:', error);
-          statusElement.textContent = 'Could not retrieve server status.';
+          statusIndicator.textContent = 'Error';
+          statusIndicator.classList.remove('online', 'offline');
+          versionIndicator.textContent = '';
+          onlinePlayerListElement.innerHTML = '<p>Could not retrieve server status.</p>';
         }
       };
 
@@ -289,22 +404,44 @@
         try {
           const response = await fetch('whitelist.json');
           const whitelistedPlayers = await response.json();
-          
+
           playerListElement.innerHTML = ''; // Clear existing content
-          whitelistedPlayers.forEach(player => {
-            const playerElement = document.createElement('div');
-            playerElement.className = 'player';
-            
-            const avatar = document.createElement('img');
-            avatar.src = `https://crafatar.com/avatars/${player.uuid}?size=64&overlay`;
-            avatar.alt = `${player.name}'s avatar`;
-            
-            const name = document.createElement('span');
-            name.textContent = player.name;
-            
-            playerElement.appendChild(avatar);
-            playerElement.appendChild(name);
-            playerListElement.appendChild(playerElement);
+          whitelistedPlayers.forEach(async (player) => {
+            try {
+              const nameResponse = await fetch(`https://api.minetools.eu/uuid/${player.uuid}`);
+              const nameData = await nameResponse.json();
+              const latestName = nameData.name;
+
+              const playerElement = document.createElement('div');
+              playerElement.className = 'player';
+
+              const avatar = document.createElement('img');
+              avatar.src = `https://crafatar.com/avatars/${player.uuid}?size=64&overlay`;
+              avatar.alt = `${latestName}'s avatar`;
+
+              const name = document.createElement('span');
+              name.textContent = latestName;
+
+              playerElement.appendChild(avatar);
+              playerElement.appendChild(name);
+              playerListElement.appendChild(playerElement);
+            } catch (error) {
+              console.error(`Error fetching name for UUID ${player.uuid}:`, error);
+              // Fallback to the name from whitelist.json if the API fails
+              const playerElement = document.createElement('div');
+              playerElement.className = 'player';
+
+              const avatar = document.createElement('img');
+              avatar.src = `https://crafatar.com/avatars/${player.uuid}?size=64&overlay`;
+              avatar.alt = `${player.name}'s avatar`;
+
+              const name = document.createElement('span');
+              name.textContent = player.name;
+
+              playerElement.appendChild(avatar);
+              playerElement.appendChild(name);
+              playerListElement.appendChild(playerElement);
+            }
           });
         } catch (error) {
           console.error('Error fetching whitelist:', error);
@@ -316,4 +453,5 @@
     });
   </script>
 </body>
+
 </html>
