@@ -26,14 +26,14 @@ $body = "Whitelist request:\n\nUsername: {$username}\n\nIP: {$_SERVER['REMOTE_AD
 
 // Set email headers.
 $headers = [
-  'From: no-reply@aaronperkel.com',
-  'Reply-To: no-reply@aaronperkel.com',
+  'From: aaron.perkel@icloud.com',
+  'Reply-To: aaron.perkel@icloud.com',
   'X-Mailer: PHP/' . phpversion()
 ];
 
 // The mail() function returns true if the email was accepted for delivery, false otherwise.
 // Note: For this to work, the server needs a configured mail server (like sendmail or postfix).
-$isSent = mail($to, $subject, $body, implode("\r\n", $headers));
+$isSent = mail($to, $subject, $body, implode("\r\n", $headers), '-f aaron.perkel@icloud.com');
 
 if ($isSent) {
   // Use a class for styling the success message.
