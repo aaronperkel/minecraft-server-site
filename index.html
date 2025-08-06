@@ -309,10 +309,12 @@
       <div class="info-item">
         <span class="info-label">Request to be Whitelisted</span>
         <p class="form-description">Want to join? Enter your Minecraft username below to request access.</p>
-        <form id="whitelist-form">
-          <input type="text" id="minecraft-username" class="form-input" placeholder="Enter your username" required />
+        <form id="whitelist-form" method="post" action="javascript:void(0);">
+          <input type="text" name="minecraft_username" id="minecraft-username" class="form-input"
+            placeholder="Enter your username" required />
           <button type="submit" class="form-button">Request Access</button>
         </form>
+        <div id="whitelist-feedback" class="info-item"></div>
       </div>
     </div>
 
@@ -404,12 +406,30 @@
 
       fetchPlayerCount();
 
-      const whitelistForm = document.getElementById('whitelist-form');
-      whitelistForm.addEventListener('submit', (event) => {
-        event.preventDefault();
-        const username = document.getElementById('minecraft-username').value;
-        const mailtoLink = `mailto:me@aaronperkel.com?subject=Minecraft Whitelist Request&body=Please add me to the whitelist. My username is: ${username}`;
-        window.location.href = mailtoLink;
+      const form = document.getElementById('whitelist-form');
+      const usernameInput = document.getElementById('minecraft-username');
+      const feedback = document.getElementById('whitelist-feedback');
+
+      form.addEventListener('submit', async e => {
+        e.preventDefault();
+
+        const username = usernameInput.value.trim();
+        if (!username) {
+          feedback.textContent = 'Please enter a valid username.';
+          return;
+        }
+
+        try {
+          const res = await fetch('/send_whitelist.php', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+            body: new URLSearchParams({ minecraft_username: username })
+          });
+          feedback.textContent = await res.text();
+        } catch (err) {
+          feedback.textContent = 'Error sending request.';
+          console.error(err);
+        }
       });
 
       const playerListElement = document.getElementById('player-list');
