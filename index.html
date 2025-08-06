@@ -210,6 +210,10 @@
       /* For scrollbar spacing */
     }
 
+    #online-player-list p {
+      grid-column: 1 / -1;
+    }
+
     .status-container {
       display: flex;
       justify-content: center;
@@ -236,6 +240,10 @@
 
     #server-version-indicator {
       background-color: var(--accent-start);
+    }
+
+    #player-count-indicator {
+      background-color: var(--accent-end);
     }
 
     @keyframes fadeIn {
@@ -267,6 +275,7 @@
   <h1>Welcome to Aaron's Minecraft Server!</h1>
   <div id="server-status-container" class="status-container">
     <span id="server-status-indicator" class="status-indicator">Pinging...</span>
+    <span id="player-count-indicator" class="status-indicator"></span>
     <span id="server-version-indicator" class="status-indicator"></span>
   </div>
   <main class="container">
@@ -339,6 +348,7 @@
       const fetchPlayerCount = async () => {
         const statusIndicator = document.getElementById('server-status-indicator');
         const versionIndicator = document.getElementById('server-version-indicator');
+        const playerCountIndicator = document.getElementById('player-count-indicator');
         const onlinePlayerListElement = document.getElementById('online-player-list');
 
         try {
@@ -350,6 +360,8 @@
             statusIndicator.classList.remove('offline');
             statusIndicator.classList.add('online');
             versionIndicator.textContent = data.server.name;
+            playerCountIndicator.textContent = `${data.players.now}/${data.players.max}`;
+
 
             onlinePlayerListElement.innerHTML = ''; // Clear existing content
 
@@ -377,6 +389,7 @@
             statusIndicator.classList.remove('online');
             statusIndicator.classList.add('offline');
             versionIndicator.textContent = '';
+            playerCountIndicator.textContent = '';
             onlinePlayerListElement.innerHTML = '<p>Server is offline.</p>';
           }
         } catch (error) {
@@ -384,6 +397,7 @@
           statusIndicator.textContent = 'Error';
           statusIndicator.classList.remove('online', 'offline');
           versionIndicator.textContent = '';
+          playerCountIndicator.textContent = '';
           onlinePlayerListElement.innerHTML = '<p>Could not retrieve server status.</p>';
         }
       };
